@@ -24,7 +24,7 @@ $(function() {
                 customFields: [{
                     type: 'hidden',
                     name: 'Image URL',
-                    vaue: url
+                    value: url
                 }]
             }).then(function() {
                 Snipcart.api.modal.show();
