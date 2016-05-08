@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Filestack + Snipcart demo</title>
+    </head>
+    
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+        <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="YjdiNWIyOTUtZTIyMy00MWMwLTkwNDUtMzI1M2M2NTgxYjE0"></script>
+        <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
+
+        <script>
+            filepicker.setKey('AnHcmQdOGT1yzcIx00fmfz');
+            Snipcart.api.configure('show_cart_automatically', false);
+            $(function() {
+                $('.add-file').click(function() {
+                    filepicker.pick({
+                       mimetype: 'image/*',
+                       services: ['COMPUTER']
+                    }, function (blob) {
+                        var baseUrl = "https://process.filestackapi.com/AnHcmQdOGT1yzcIx00fmfz"
+                        console.log(blob);
+                        var screenshotUrl = baseUrl + "/urlscreenshot/";
+                        var url = screenshotUrl + baseUrl + "/ascii/" + blob.url;
+                        
+                        Snipcart.api.items.add({
+                            id: "FilestackImage",
+                            name: 'Custom ASCII poster',
+                            url: "/",
+                            image: url,
+                            price: 30,
+                            customFields: [{
+                                type: 'hidden',
+                                name: 'Image URL',
+                                vaue: url
+                            }]
+                        }).then(function() {
+                            Snipcart.api.modal.show();
+                        });
+                   });
+                });
+            });
+        </script>
+        <button class="add-file" type="button">Add file</button>
+        <img class="output-holder" />
+        <span class="snipcart-add-item" style="display: none" data-item-id="FilestackImage" data-item-name="Poster" data-item-price="30">
+            Hidden span for Snipcart crawler.
+        </span>
+    </body>
+</html>
