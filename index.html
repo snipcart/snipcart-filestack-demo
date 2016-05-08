@@ -1,52 +1,88 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
-    <head>
-        <title>Filestack + Snipcart demo</title>
-    </head>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Buy awesome ASCII art posters! Powered by Filestack and Snipcart.</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/freelancer.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="//api.filepicker.io/v2/filepicker.js"></script>
+    <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="YjdiNWIyOTUtZTIyMy00MWMwLTkwNDUtMzI1M2M2NTgxYjE0"></script>
+    <script src="scripts/app.js"></script>
+    <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">ASCII Posters</a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="snipcart-summary">
+                        <a class="snipcart-checkout" href="#">
+                            <i class="fa fa-shopping-cart"></i> My cart (<span class="snipcart-total-items">0</span>)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">ASCII Posters</span>
+                        <hr class="star-light">
+                        <span class="skills">
+                            Click on the button below to upload any image from your computer that we will then convert to a beautiful ASCII poster!
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#" class="btn btn-lg btn-outline add-file">
+                        <i class="fa fa-download"></i> Upload image and add to cart.
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-        <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
-        <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="YjdiNWIyOTUtZTIyMy00MWMwLTkwNDUtMzI1M2M2NTgxYjE0"></script>
-        <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
-
-        <script>
-            filepicker.setKey('AnHcmQdOGT1yzcIx00fmfz');
-            Snipcart.api.configure('show_cart_automatically', false);
-            $(function() {
-                $('.add-file').click(function() {
-                    filepicker.pick({
-                       mimetype: 'image/*',
-                       services: ['COMPUTER']
-                    }, function (blob) {
-                        var baseUrl = "https://process.filestackapi.com/AnHcmQdOGT1yzcIx00fmfz"
-                        console.log(blob);
-                        var screenshotUrl = baseUrl + "/urlscreenshot/";
-                        var url = screenshotUrl + baseUrl + "/ascii/" + blob.url;
-                        
-                        Snipcart.api.items.add({
-                            id: "FilestackImage",
-                            name: 'Custom ASCII poster',
-                            url: "/",
-                            image: url,
-                            price: 30,
-                            customFields: [{
-                                type: 'hidden',
-                                name: 'Image URL',
-                                vaue: url
-                            }]
-                        }).then(function() {
-                            Snipcart.api.modal.show();
-                        });
-                   });
-                });
-            });
-        </script>
-        <button class="add-file" type="button">Add file</button>
-        <img class="output-holder" />
-        <span class="snipcart-add-item" style="display: none" data-item-id="FilestackImage" data-item-name="Poster" data-item-price="30">
-            Hidden span for Snipcart crawler.
-        </span>
-    </body>
+    <span class="snipcart-add-item" style="display: none" data-item-id="FilestackImage" data-item-name="Poster" data-item-price="30">
+        Hidden span for Snipcart crawler.
+    </span>
+</body>
 </html>
