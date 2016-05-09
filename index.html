@@ -16,6 +16,7 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="//api.filepicker.io/v2/filepicker.js"></script>
     <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="YjdiNWIyOTUtZTIyMy00MWMwLTkwNDUtMzI1M2M2NTgxYjE0"></script>
@@ -56,31 +57,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <img id="preview" class="img-responsive" src="img/profile.png" alt="">
                     <div class="intro-text">
-                        <span class="name">ASCII Posters</span>
                         <hr class="star-light">
                         <span class="skills">
                             Click on the button below to upload any image from your computer that we will then convert to a beautiful ASCII poster!
                         </span>
+                        <div>
+                            <a id="add-file" href="#" class="btn btn-lg btn-outline">
+                                <i class="fa fa-download"></i>
+                                Upload image and generate preview
+                            </a>
+                            <a id="add-to-cart" href="#" class="btn btn-lg btn-outline" style="display: none">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to cart
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline add-file">
-                        <i class="fa fa-download"></i> Upload image and add to cart.
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <span class="snipcart-add-item" style="display: none" data-item-id="FilestackImage" data-item-name="Poster" data-item-price="30">
         Hidden span for Snipcart crawler.
     </span>
